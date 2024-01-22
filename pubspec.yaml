@@ -20,6 +20,7 @@ dependencies:
   rxdart:
   flutter_screenutil:
   connectivity_plus: ^5.0.2
+  http: ^1.2.0
 
 
 dev_dependencies:

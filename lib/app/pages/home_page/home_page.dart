@@ -1,15 +1,30 @@
+import 'package:ctl/app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../res/layouts/main/main_layout.dart';
-
-import '../../controllers/home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MainLayout(
-      child: const Center(child: Text('Home')),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Coin List'),
+      ),
+      body: Obx(
+        () => ListView.builder(
+          itemCount: controller.coins.length,
+          itemBuilder: (context, index) {
+            final coin = controller.coins[index];
+            return ListTile(
+              onTap: () => controller.postVote(coin.sId ?? ''),
+              title: Text(coin.vote?.toString() ?? '0',
+                  style: TextStyle(color: coin.color)),
+              subtitle: Text('Price: ${coin.price?.toString() ?? 'N/A'}'),
+            );
+          },
+        ),
+      ),
     );
   }
 }

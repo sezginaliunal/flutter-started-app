@@ -1,3 +1,5 @@
+import 'package:ctl/app/controllers/home_controller.dart';
+
 import '../../controllers/navigation_controller.dart';
 import '../../controllers/main_controller.dart';
 
@@ -10,5 +12,6 @@ class DependecyInjection {
 
     Get.put<NavigationController>(NavigationController());
     Get.put<MainController>(MainController());
+    Get.put<HomeController>(HomeController());
   }
 }
