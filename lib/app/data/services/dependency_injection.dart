@@ -1,4 +1,4 @@
-import 'package:ctl/app/controllers/home_controller.dart';
+import 'package:started_app/app/controllers/splash_controller.dart';
 
 import '../../controllers/navigation_controller.dart';
 import '../../controllers/main_controller.dart';
@@ -11,7 +11,8 @@ class DependecyInjection {
     await GetStorage.init();
 
     Get.put<NavigationController>(NavigationController());
+    Get.put<SplashController>(SplashController());
     Get.put<MainController>(MainController());
-    Get.put<HomeController>(HomeController());
+    // Get.put<HomeController>(HomeController());
   }
 }

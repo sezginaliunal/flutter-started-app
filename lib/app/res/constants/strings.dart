@@ -1,3 +1,7 @@
 class AppStrings {
-  static const appName = 'CoinTopList';
+  //App Info
+  static const appName = '';
+
+  //Keys
+  static const String token = 'userToken';
 }

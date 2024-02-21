@@ -1,8 +1,8 @@
-import 'package:ctl/app/bindings/network_binding.dart';
-import 'package:ctl/app/res/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:started_app/app/bindings/network_binding.dart';
+import 'package:started_app/app/res/constants/strings.dart';
 import 'app/data/services/dependency_injection.dart';
 import 'app/data/services/theme_service.dart';
 import 'app/data/services/translations_service.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           translations: Translation(),
           locale: const Locale('en'),
           fallbackLocale: const Locale('en'),
-          initialRoute: AppRoutes.HOME,
+          initialRoute: AppRoutes.SPLASH,
           initialBinding: NetworkBinding(),
           unknownRoute: AppPages.unknownRoutePage,
           getPages: AppPages.pages,

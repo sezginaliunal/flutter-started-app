@@ -1,4 +1,4 @@
-import 'package:ctl/app/controllers/network_controller.dart';
+import 'package:started_app/app/controllers/network_controller.dart';
 import 'package:get/get.dart';
 
 class NetworkBinding implements Bindings {

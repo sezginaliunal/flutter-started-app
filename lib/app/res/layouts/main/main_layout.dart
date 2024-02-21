@@ -1,5 +1,5 @@
 // views/main_layout.dart
-import 'package:ctl/app/controllers/network_controller.dart';
+import 'package:started_app/app/controllers/network_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controllers/main_controller.dart';
