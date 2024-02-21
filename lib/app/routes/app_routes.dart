@@ -3,4 +3,6 @@ class AppRoutes {
   static const SPLASH = '/';
   static const HOME = '/home';
   static const UNKNOWN = '/404';
+  static const REGISTER = '/register';
+  static const LOGIN = '/login';
 }
