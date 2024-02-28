@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:started_app/app/data/services/storage/get_storage.dart';
-import 'package:started_app/app/res/constants/strings.dart';
-import 'package:started_app/app/res/durations/duration_items.dart';
-import 'package:started_app/app/routes/app_routes.dart';
+import 'package:cingo/app/data/services/storage/get_storage.dart';
+import 'package:cingo/app/res/constants/strings.dart';
+import 'package:cingo/app/res/durations/duration_items.dart';
+import 'package:cingo/app/routes/app_routes.dart';
 
 class SplashController extends GetxController {
   final GetStorageService getStorageService = GetStorageService();
@@ -12,16 +12,19 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _timer = Timer.periodic(DurationItems.durationNormal(), (timer) {
-      checkUserToken();
-    });
+    checkUserToken();
   }
 
   void checkUserToken() async {
     var isUserToken = await getStorageService.getData(AppStrings.token);
+    await Future.delayed(DurationItems.durationNormal());
     if (isUserToken.success) {
-      _timer.cancel();
-      Get.offAllNamed(AppRoutes.HOME);
+      print('Token :${isUserToken.data}');
+      if (isUserToken.data != null) {
+        Get.offAllNamed(AppRoutes.HOME);
+      } else {
+        Get.offAllNamed(AppRoutes.LOGIN);
+      }
     } else {
       Get.offAllNamed(AppRoutes.LOGIN);
     }
