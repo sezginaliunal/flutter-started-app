@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class MainController extends GetxController {
   //Global Keys
-  final formKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
+  final registerFormKey = GlobalKey<FormState>();
 
   //Change Loading
   RxBool loading = false.obs;
