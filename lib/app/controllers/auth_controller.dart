@@ -1,15 +1,19 @@
-import 'package:flutter/widgets.dart';
+import 'package:cingo/app/data/models/auth/login_request.dart';
+import 'package:cingo/app/data/models/auth/login_response.dart';
+import 'package:cingo/app/data/models/auth/register_request.dart';
+import 'package:cingo/app/data/models/auth/register_response.dart';
+import 'package:cingo/app/data/services/api/api_response.dart';
+import 'package:cingo/app/data/services/api/exception.dart';
+import 'package:cingo/app/data/services/auth_service.dart';
+import 'package:cingo/app/data/services/storage/get_storage.dart';
+import 'package:cingo/app/res/constants/strings.dart';
+import 'package:cingo/app/res/durations/duration_items.dart';
+import 'package:cingo/app/res/utils/snackbar_helper.dart';
+import 'package:cingo/app/routes/app_routes.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:started_app/app/controllers/main_controller.dart';
-import 'package:started_app/app/data/models/auth/login_request.dart';
-import 'package:started_app/app/data/models/auth/login_response.dart';
-import 'package:started_app/app/data/models/auth/register_request.dart';
-import 'package:started_app/app/data/models/auth/register_response.dart';
-import 'package:started_app/app/data/services/api/api_response.dart';
-import 'package:started_app/app/data/services/api/exception.dart';
-import 'package:started_app/app/data/services/auth_service.dart';
-import 'package:started_app/app/data/services/storage/get_storage.dart';
-import 'package:started_app/app/res/constants/strings.dart';
+
+import 'main_controller.dart';
 
 class AuthController extends GetxController {
   final MainController mainController = MainController();
@@ -39,8 +43,9 @@ class AuthController extends GetxController {
 
       if (apiResponse.success) {
         final RegisterResponse response =
-            RegisterResponse.fromJson(apiResponse.data);
+            RegisterResponse.fromJson(apiResponse.data!);
         mainController.changeLoading();
+        SnackbarHelper.showSuccessSnackbar('Success', 'Success');
         return response;
       } else {
         mainController.changeLoading();
@@ -61,10 +66,12 @@ class AuthController extends GetxController {
           await _authService.post('login', request.toJson());
 
       if (apiResponse.success) {
-        final LoginResponse response = LoginResponse.fromJson(apiResponse.data);
+        final LoginResponse response =
+            LoginResponse.fromJson(apiResponse.data!);
         print(response.toJson());
-        _getStorageService.saveData(AppStrings.token, response.token);
+        await _getStorageService.saveData(AppStrings.token, response.token);
         mainController.changeLoading();
+        Get.offAllNamed(AppRoutes.HOME);
         return response;
       } else {
         mainController.changeLoading();
@@ -74,5 +81,11 @@ class AuthController extends GetxController {
     } catch (e) {
       throw ApiException('Failed to login: $e');
     }
+  }
+
+  //Logout
+  Future<void> logOut() async {
+    await _getStorageService.deleteData(AppStrings.token);
+    Get.offAllNamed(AppRoutes.LOGIN);
   }
 }
