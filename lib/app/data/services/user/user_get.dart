@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-import 'package:started_app/app/data/services/api/api_response.dart';
-import 'package:started_app/app/data/services/api/base_api_service.dart';
-import 'package:started_app/app/data/services/api/custom_header.dart';
-import 'package:started_app/app/data/services/storage/get_storage.dart';
-import 'package:started_app/app/res/constants/app_urls.dart';
-import 'package:started_app/app/res/constants/strings.dart';
-import 'package:started_app/app/res/utils/snackBar_helper.dart';
+import 'package:cingo/app/data/services/api/api_response.dart';
+import 'package:cingo/app/data/services/api/base_api_service.dart';
+import 'package:cingo/app/data/services/api/custom_header.dart';
+import 'package:cingo/app/data/services/storage/get_storage.dart';
+import 'package:cingo/app/res/constants/app_urls.dart';
+import 'package:cingo/app/res/constants/strings.dart';
 
 class UserGetService implements BaseApiService {
   @override
@@ -23,21 +20,7 @@ class UserGetService implements BaseApiService {
         headers:
             CustomHeaders.create(authorization: 'Bearer ${userToken.data}'),
       );
-      print(response.headers);
-      if (response.statusCode == 200) {
-        SnackbarHelper.showSuccessSnackbar('Success', 'Congratulations');
-        return ApiResponse(
-            success: true, data: jsonDecode(response.body), errorMessage: '');
-      } else {
-        final data = jsonDecode(response.body);
-        print(data);
-        SnackbarHelper.showErrorSnackbar('Error', data['message']);
-        return ApiResponse(
-          success: false,
-          errorMessage: 'HTTP Error: ${response.statusCode}',
-          data: data,
-        );
-      }
+      return ApiResponse.fromHttpResponse(response);
     } else {
       throw Exception();
     }
