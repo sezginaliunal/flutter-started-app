@@ -41,7 +41,7 @@ class ApiResponse<T> {
         success: false,
         errorMessage: 'HTTP Error: ${response.statusCode}',
         data: data,
-        httpStatus: HttpStatus.ok,
+        httpStatus: HttpStatus.badRequest,
       );
     } else if (response.statusCode == 429) {
       final data = jsonDecode(response.body);
