@@ -1,6 +1,6 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:started_app/app/data/services/storage/base_storage.dart';
-import 'package:started_app/app/data/services/storage/response.dart';
+import 'package:minimal_note/app/data/services/storage/base_storage.dart';
+import 'package:minimal_note/app/data/services/storage/response.dart';
 
 class GetStorageService extends BaseStorageService {
   final GetStorage _storage = GetStorage();
@@ -41,6 +41,30 @@ class GetStorageService extends BaseStorageService {
       return CacheResponse(contains, true);
     } catch (e) {
       return CacheResponse(false, false, message: e.toString());
+    }
+  }
+
+  //Save List Data
+  Future<CacheResponse<bool>> saveListData(
+      String key, List<dynamic> dataList) async {
+    try {
+      await _storage.write(key, dataList);
+      return CacheResponse(true, true);
+    } catch (e) {
+      return CacheResponse(false, false, message: e.toString());
+    }
+  }
+
+  //Load List Data
+  Future<CacheResponse<List<dynamic>>> getListData(String key) async {
+    try {
+      final dataList = _storage.read<List<dynamic>>(key);
+      return CacheResponse(
+        dataList!,
+        true,
+      );
+    } catch (e) {
+      return CacheResponse([], false, message: e.toString());
     }
   }
 }
