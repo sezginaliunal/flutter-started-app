@@ -1,3 +1,5 @@
+// import 'dart:math';
+
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 // // ignore: depend_on_referenced_packages
@@ -6,7 +8,6 @@
 // class NotificationService {
 //   final FlutterLocalNotificationsPlugin notificationsPlugin =
 //       FlutterLocalNotificationsPlugin();
-//   int _notificationId = 0; // Bildirim ID'sini tutacak değişken
 //   Future<void> initNotification() async {
 //     AndroidInitializationSettings initializationSettingsAndroid =
 //         const AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -42,12 +43,12 @@
 //     required String body,
 //     required DateTime scheduledNotificationDateTime,
 //   }) async {
-//     _notificationId++; // Yeni bildirim için ID artışı
+//     Random random = Random();
+//     int notificationId = random.nextInt(100000);
 
 //     try {
 //       await notificationsPlugin.zonedSchedule(
-//         _notificationId, // Yeni ID kullanılıyor
-
+//         notificationId,
 //         title,
 //         body,
 //         tz.TZDateTime.from(
@@ -86,5 +87,28 @@
 //       print('Scheduled Time: ${notification.payload}');
 //       print('------------');
 //     }
+//   }
+
+//   Future<void> instantNotification({
+//     required String title,
+//     required String body,
+//   }) async {
+//     const AndroidNotificationDetails androidPlatformChannelSpecifics =
+//         AndroidNotificationDetails(
+//       'your channel id',
+//       'your channel name',
+//       importance: Importance.max,
+//       priority: Priority.high,
+//       ticker: 'ticker',
+//     );
+//     const NotificationDetails platformChannelSpecifics =
+//         NotificationDetails(android: androidPlatformChannelSpecifics);
+//     await notificationsPlugin.show(
+//       0,
+//       title,
+//       body,
+//       platformChannelSpecifics,
+//       payload: 'item x',
+//     );
 //   }
 // }
