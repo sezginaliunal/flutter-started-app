@@ -7,13 +7,17 @@ class CustomTextFormField extends StatefulWidget {
       required this.obSecureText,
       required this.controller,
       required this.hintText,
-      this.validator})
+      this.validator,
+      this.keyboardType,
+      this.autoFillHint})
       : super(key: key);
 
   final bool obSecureText;
   final TextEditingController controller;
   final String hintText;
   final String Function(String?)? validator;
+  final TextInputType? keyboardType;
+  final String? autoFillHint;
 
   // Method to toggle obscure text
   void toggleObsecure() => _CustomTextFormFieldState()._toggleObsecure();
@@ -51,9 +55,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         }
         return null;
       },
-      autofillHints: widget.obSecureText
-          ? [AutofillHints.password]
-          : [AutofillHints.username],
+      keyboardType: widget.keyboardType,
+      autofillHints: [widget.autoFillHint ?? AutofillHints.username],
       decoration: InputDecoration(
         hintText: widget.hintText,
         suffixIcon: widget.obSecureText

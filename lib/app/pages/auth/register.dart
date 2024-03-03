@@ -35,24 +35,30 @@ class RegisterPage extends GetView<AuthController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       CustomTextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        autoFillHint: AutofillHints.email,
                         controller: controller.email.value,
                         hintText: 'Email',
                         obSecureText: false,
                       ),
                       const HeightBoxesItems.heightFive(),
                       CustomTextFormField(
+                        keyboardType: TextInputType.text,
+                        autoFillHint: AutofillHints.password,
                         controller: controller.password.value,
                         hintText: 'Password',
                         obSecureText: true,
                       ),
                       const HeightBoxesItems.heightFive(),
                       CustomTextFormField(
+                        autoFillHint: AutofillHints.name,
                         obSecureText: false,
                         controller: controller.name.value,
                         hintText: 'Name',
                       ),
                       const HeightBoxesItems.heightFive(),
                       CustomTextFormField(
+                        autoFillHint: AutofillHints.name,
                         obSecureText: false,
                         controller: controller.lastName.value,
                         hintText: 'Last Name',

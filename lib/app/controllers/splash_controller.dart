@@ -23,10 +23,10 @@ class SplashController extends GetxController {
       if (isUserToken.data != null) {
         Get.offAllNamed(AppRoutes.HOME);
       } else {
-        Get.offAllNamed(AppRoutes.LOGIN);
+        Get.offAllNamed(AppRoutes.HOME);
       }
     } else {
-      Get.offAllNamed(AppRoutes.LOGIN);
+      Get.offAllNamed(AppRoutes.HOME);
     }
   }
 

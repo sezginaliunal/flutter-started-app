@@ -37,12 +37,16 @@ class LoginPage extends GetView<AuthController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       CustomTextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        autoFillHint: AutofillHints.email,
                         obSecureText: false,
                         controller: controller.email.value,
                         hintText: 'Email',
                       ),
                       const HeightBoxesItems.heightFive(),
                       CustomTextFormField(
+                        keyboardType: TextInputType.text,
+                        autoFillHint: AutofillHints.password,
                         controller: controller.password.value,
                         hintText: 'Password',
                         obSecureText: true,

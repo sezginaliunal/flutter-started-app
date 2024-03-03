@@ -5,7 +5,7 @@ import 'package:started_app/app/data/services/api/exception.dart';
 import 'package:started_app/app/data/services/user/user_get.dart';
 
 class UserController extends GetxController {
-  final UserGetService _userGetService = UserGetService();
+  final UserService _userGetService = UserService();
 
   Future<Data> getUser() async {
     try {

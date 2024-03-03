@@ -3,5 +3,6 @@ class AppUrl {
   static const String oneSignalAppId = '';
 
   //Api Urls
-  static const String baseUrl = 'http://192.168.1.238:5000/api';
+  static const String baseUrl = 'https://reqres.in/api';
+  static const String userList = 'users';
 }

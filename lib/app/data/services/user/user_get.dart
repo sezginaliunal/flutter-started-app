@@ -6,7 +6,7 @@ import 'package:started_app/app/data/services/storage/get_storage.dart';
 import 'package:started_app/app/res/constants/app_urls.dart';
 import 'package:started_app/app/res/constants/strings.dart';
 
-class UserGetService implements BaseApiService {
+class UserService implements BaseApiService {
   @override
   String get baseApiUrl => AppUrl.baseUrl;
   var storageService = GetStorageService();
