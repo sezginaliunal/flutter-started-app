@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:cingo/app/res/utils/snackbar_helper.dart';
-import 'package:cingo/app/routes/app_routes.dart';
+import 'package:started_app/app/res/utils/snackbar_helper.dart';
+import 'package:started_app/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 enum HttpStatus {

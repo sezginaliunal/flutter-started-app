@@ -1,15 +1,14 @@
-import 'package:cingo/app/data/models/auth/login_request.dart';
-import 'package:cingo/app/data/models/auth/login_response.dart';
-import 'package:cingo/app/data/models/auth/register_request.dart';
-import 'package:cingo/app/data/models/auth/register_response.dart';
-import 'package:cingo/app/data/services/api/api_response.dart';
-import 'package:cingo/app/data/services/api/exception.dart';
-import 'package:cingo/app/data/services/auth_service.dart';
-import 'package:cingo/app/data/services/storage/get_storage.dart';
-import 'package:cingo/app/res/constants/strings.dart';
-import 'package:cingo/app/res/durations/duration_items.dart';
-import 'package:cingo/app/res/utils/snackbar_helper.dart';
-import 'package:cingo/app/routes/app_routes.dart';
+import 'package:started_app/app/data/models/auth/login_request.dart';
+import 'package:started_app/app/data/models/auth/login_response.dart';
+import 'package:started_app/app/data/models/auth/register_request.dart';
+import 'package:started_app/app/data/models/auth/register_response.dart';
+import 'package:started_app/app/data/services/api/api_response.dart';
+import 'package:started_app/app/data/services/api/exception.dart';
+import 'package:started_app/app/data/services/auth_service.dart';
+import 'package:started_app/app/data/services/storage/get_storage.dart';
+import 'package:started_app/app/res/constants/strings.dart';
+import 'package:started_app/app/res/utils/snackbar_helper.dart';
+import 'package:started_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

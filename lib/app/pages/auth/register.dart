@@ -1,11 +1,11 @@
-import 'package:cingo/app/res/boxes/height.dart';
-import 'package:cingo/app/res/constants/paddings.dart';
-import 'package:cingo/app/res/widget/auth_button.dart';
-import 'package:cingo/app/routes/app_routes.dart';
+import 'package:started_app/app/res/boxes/height.dart';
+import 'package:started_app/app/res/constants/paddings.dart';
+import 'package:started_app/app/res/widget/auth_button.dart';
+import 'package:started_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cingo/app/controllers/auth_controller.dart';
-import 'package:cingo/app/res/widget/custom_text_form.dart';
+import 'package:started_app/app/controllers/auth_controller.dart';
+import 'package:started_app/app/res/widget/custom_text_form.dart';
 
 class RegisterPage extends GetView<AuthController> {
   const RegisterPage({Key? key}) : super(key: key);

@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons:
+  #State
   get:
   get_storage:
   flutter_lints:
@@ -19,6 +20,7 @@ dependencies:
   json_serializable:
   rxdart:
   flutter_screenutil:
+  #Internet Service
   connectivity_plus: ^5.0.2
   http: ^1.2.0
 

@@ -1,9 +1,8 @@
-import 'package:cingo/app/res/constants/app_urls.dart';
 import 'package:get/get.dart';
-import 'package:cingo/app/data/models/user/user.dart';
-import 'package:cingo/app/data/services/api/api_response.dart';
-import 'package:cingo/app/data/services/api/exception.dart';
-import 'package:cingo/app/data/services/user/user_get.dart';
+import 'package:started_app/app/data/models/user/user.dart';
+import 'package:started_app/app/data/services/api/api_response.dart';
+import 'package:started_app/app/data/services/api/exception.dart';
+import 'package:started_app/app/data/services/user/user_get.dart';
 
 class UserController extends GetxController {
   final UserGetService _userGetService = UserGetService();
@@ -11,7 +10,7 @@ class UserController extends GetxController {
   Future<Data> getUser() async {
     try {
       final ApiResponse<Map<String, dynamic>> apiResponse =
-          await _userGetService.get(AppUrl.me);
+          await _userGetService.get('me');
       if (apiResponse.success) {
         final UserInfo response = UserInfo.fromJson(apiResponse.data!);
         print(response.data?.email);

@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:cingo/app/data/services/storage/get_storage.dart';
-import 'package:cingo/app/res/constants/strings.dart';
-import 'package:cingo/app/res/durations/duration_items.dart';
-import 'package:cingo/app/routes/app_routes.dart';
+import 'package:started_app/app/data/services/storage/get_storage.dart';
+import 'package:started_app/app/res/constants/strings.dart';
+import 'package:started_app/app/res/durations/duration_items.dart';
+import 'package:started_app/app/routes/app_routes.dart';
 
 class SplashController extends GetxController {
   final GetStorageService getStorageService = GetStorageService();

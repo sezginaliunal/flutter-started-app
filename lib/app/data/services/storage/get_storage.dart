@@ -1,6 +1,6 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:minimal_note/app/data/services/storage/base_storage.dart';
-import 'package:minimal_note/app/data/services/storage/response.dart';
+import 'package:started_app/app/data/services/storage/base_storage.dart';
+import 'package:started_app/app/data/services/storage/response.dart';
 
 class GetStorageService extends BaseStorageService {
   final GetStorage _storage = GetStorage();

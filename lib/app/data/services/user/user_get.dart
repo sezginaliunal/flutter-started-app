@@ -1,10 +1,10 @@
 import 'package:http/http.dart' as http;
-import 'package:cingo/app/data/services/api/api_response.dart';
-import 'package:cingo/app/data/services/api/base_api_service.dart';
-import 'package:cingo/app/data/services/api/custom_header.dart';
-import 'package:cingo/app/data/services/storage/get_storage.dart';
-import 'package:cingo/app/res/constants/app_urls.dart';
-import 'package:cingo/app/res/constants/strings.dart';
+import 'package:started_app/app/data/services/api/api_response.dart';
+import 'package:started_app/app/data/services/api/base_api_service.dart';
+import 'package:started_app/app/data/services/api/custom_header.dart';
+import 'package:started_app/app/data/services/storage/get_storage.dart';
+import 'package:started_app/app/res/constants/app_urls.dart';
+import 'package:started_app/app/res/constants/strings.dart';
 
 class UserGetService implements BaseApiService {
   @override

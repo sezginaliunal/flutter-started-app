@@ -1,10 +1,10 @@
 import 'package:http/http.dart' as http;
-import 'package:cingo/app/data/services/api/api_response.dart';
+import 'package:started_app/app/data/services/api/api_response.dart';
 import 'dart:convert';
 
-import 'package:cingo/app/data/services/api/base_api_service.dart';
-import 'package:cingo/app/data/services/api/custom_header.dart';
-import 'package:cingo/app/res/constants/app_urls.dart';
+import 'package:started_app/app/data/services/api/base_api_service.dart';
+import 'package:started_app/app/data/services/api/custom_header.dart';
+import 'package:started_app/app/res/constants/app_urls.dart';
 
 class AuthService implements BaseApiService {
   @override
