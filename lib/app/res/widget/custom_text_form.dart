@@ -51,6 +51,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         }
         return null;
       },
+      autofillHints: widget.obSecureText
+          ? [AutofillHints.password]
+          : [AutofillHints.username],
       decoration: InputDecoration(
         hintText: widget.hintText,
         suffixIcon: widget.obSecureText
@@ -59,7 +62,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 icon: Icon(
                     _obSecureText ? Icons.visibility : Icons.visibility_off),
               )
-            : null, // If it's not a password field, don't show suffixIcon
+            : null,
       ),
     );
   }
