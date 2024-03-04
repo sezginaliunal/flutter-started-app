@@ -11,9 +11,9 @@ class DependecyInjection {
   static Future<void> init() async {
     await GetStorage.init();
     NetworkManager.instance;
-    Get.put<SplashController>(SplashController());
-    Get.put<NavigationController>(NavigationController());
     Get.put<MainController>(MainController());
+    Get.put<NavigationController>(NavigationController());
+    Get.put<SplashController>(SplashController());
     // Get.put<HomeController>(HomeController());
   }
 }

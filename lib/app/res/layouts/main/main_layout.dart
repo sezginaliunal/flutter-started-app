@@ -14,22 +14,9 @@ class MainLayout extends GetView<MainController> {
   final ThemeMode currentThemeMode = ThemeService.instance.themeMode;
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          appBar: AppBar(
-            actions: [
-              CupertinoSwitch(
-                value: ThemeService.instance.themeMode == ThemeMode.dark,
-                onChanged: (value) {
-                  ThemeService.instance.themeMode =
-                      value ? ThemeMode.dark : ThemeMode.light;
-                },
-              ),
-            ],
-          ),
-          body: SafeArea(
-              child: networkController.connectionStatus.value == 0
-                  ? const Text('No Connection')
-                  : child),
-        ));
+    return Obx(() => SafeArea(
+        child: networkController.connectionStatus.value == 0
+            ? const Text('No Connection')
+            : child));
   }
 }
