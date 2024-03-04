@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:started_app/app/data/services/storage/get_storage.dart';
-import 'package:started_app/app/res/constants/strings.dart';
 import 'package:started_app/app/res/durations/duration_items.dart';
+import 'package:started_app/app/res/enums/preferences_keys.dart';
 import 'package:started_app/app/routes/app_routes.dart';
 
 class SplashController extends GetxController {
@@ -16,10 +16,10 @@ class SplashController extends GetxController {
   }
 
   void checkUserToken() async {
-    var isUserToken = await getStorageService.getData(AppStrings.token);
+    var isUserToken =
+        await getStorageService.getData(PreferencesKeys.TOKEN.toKeyName());
     await Future.delayed(DurationItems.durationNormal());
     if (isUserToken.success) {
-      print('Token :${isUserToken.data}');
       if (isUserToken.data != null) {
         Get.offAllNamed(AppRoutes.HOME);
       } else {

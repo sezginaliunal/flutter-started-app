@@ -1,7 +1,7 @@
 class CacheResponse<T> {
   final T data;
   final bool success;
-  final String? message;
+  final String message;
 
-  CacheResponse(this.data, this.success, {this.message = 'Success'});
+  CacheResponse(this.data, this.success, {this.message = ''});
 }

@@ -7,10 +7,21 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Home'),
-      ),
+    return Scaffold(
+      floatingActionButton:
+          FloatingActionButton(onPressed: () => controller.postSampleHttp()),
+      body: Obx(() => ListView.builder(
+            itemCount: controller.sampleList.length,
+            itemBuilder: (BuildContext context, int index) {
+              final responseData = controller.sampleList[index];
+              return Card(
+                child: ListTile(
+                  title: Text(responseData.email ??
+                      'No Email'), // Örneğin email özelliğini gösteriyorum.
+                ),
+              );
+            },
+          )),
     );
   }
 }

@@ -9,6 +9,11 @@
 .history
 .svn/
 migrate_working_dir/
+.linux/
+.build/
+..dart_tool/
+.test/
+
 
 # IntelliJ related
 *.iml
