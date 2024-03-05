@@ -19,7 +19,7 @@ class SplashController extends GetxController {
     if (isUserToken.success && isUserToken.data != null) {
       Get.offAllNamed(AppRoutes.HOME);
     } else {
-      Get.offAllNamed(AppRoutes.HOME);
+      Get.offAllNamed(AppRoutes.LOGIN);
     }
   }
 }
