@@ -10,8 +10,18 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return MainLayout(
         child: Scaffold(
-      body: Center(
-        child: Text('homeTitle'.tr),
+      floatingActionButton:
+          FloatingActionButton(onPressed: () => controller.getData()),
+      body: Obx(
+        () => ListView.builder(
+          itemCount: controller.sampleList.length,
+          itemBuilder: (BuildContext context, int index) {
+            final sampleModel = controller.sampleList[index];
+            return ListTile(
+              title: Text(sampleModel.email),
+            );
+          },
+        ),
       ),
     ));
   }
