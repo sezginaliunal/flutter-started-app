@@ -9,9 +9,9 @@ class SplashPage extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-        child: const Scaffold(
+        child: Scaffold(
       body: Center(
-        child: Text('Splash'),
+        child: Text('homeTitle'.tr),
       ),
     ));
   }

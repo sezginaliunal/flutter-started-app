@@ -1,5 +1,5 @@
-import 'package:fake_e_commerce/app/res/enums/text_editing_validate.dart';
-import 'package:fake_e_commerce/app/res/extension/text_editing_validate.dart';
+import 'package:started_app/app/res/enums/text_editing_validate.dart';
+import 'package:started_app/app/res/extensions/text_editing_validate.dart';
 
 class TextEditingControllerUtils {
   String? emailValidator(String? value) {

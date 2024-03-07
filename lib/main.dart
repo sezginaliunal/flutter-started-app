@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:started_app/app/bindings/network_binding.dart';
+import 'package:started_app/app/controllers/translation_controller.dart';
 import 'package:started_app/app/res/constants/strings.dart';
 import 'app/data/services/dependency_injection.dart';
 import 'app/data/services/theme_service.dart';
@@ -14,7 +15,6 @@ import 'app/res/theme/base_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependecyInjection.init();
-
   runApp(const MyApp());
 }
 
@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TranslationController translationController = Get.find();
     return ScreenUtilInit(
       builder: (_, __) {
         return GetMaterialApp(
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
           darkTheme: Themes().darkTheme,
           themeMode: ThemeService.instance.themeMode,
           translations: Translation(),
-          locale: const Locale('en'),
+          locale: Locale(translationController.selectedLanguage),
           fallbackLocale: const Locale('en'),
           initialRoute: AppRoutes.SPLASH,
           initialBinding: NetworkBinding(),
