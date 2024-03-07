@@ -18,7 +18,7 @@ class HomePage extends GetView<HomeController> {
           itemBuilder: (BuildContext context, int index) {
             final sampleModel = controller.sampleList[index];
             return ListTile(
-              title: Text(sampleModel.email),
+              title: Text(sampleModel.email ?? ''),
             );
           },
         ),
