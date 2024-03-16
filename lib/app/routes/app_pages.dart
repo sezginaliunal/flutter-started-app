@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:started_app/app/bindings/splash_binding.dart';
+import 'package:started_app/app/pages/login.dart';
 import 'package:started_app/app/pages/splash.dart';
 
 import '../bindings/home_binding.dart';
@@ -27,10 +28,15 @@ class AppPages {
     binding: SplashBinding(),
     transition: _defaultTransition,
   );
-
+  static final loginPage = GetPage(
+    name: AppRoutes.LOGIN,
+    page: () => const LoginPage(),
+    transition: _defaultTransition,
+  );
   static final List<GetPage> pages = [
     unknownRoutePage,
     homePage,
     splashPage,
+    loginPage
   ];
 }
