@@ -8,7 +8,7 @@ class SplashController extends GetxController {
 
   Future<bool> checkUserToken() async {
     CacheResponse<dynamic> isUserToken =
-        await getStorageService.getData(PreferencesKeys.TOKEN.toKeyName());
+        await getStorageService.getData(PreferencesKeys.IS_LOGIN.toKeyName());
 
     if (isUserToken.success &&
         isUserToken.data != null &&
