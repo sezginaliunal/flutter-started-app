@@ -4,10 +4,10 @@ import 'package:started_app/app/bindings/splash_binding.dart';
 import 'package:started_app/app/pages/auth_page.dart';
 import 'package:started_app/app/pages/login.dart';
 import 'package:started_app/app/pages/splash.dart';
+import 'package:started_app/app/pages/unknown_route_page.dart';
 
 import '../bindings/home_binding.dart';
 import '../pages/home_page.dart';
-import '../pages/unknown_route_page.dart';
 import 'app_routes.dart';
 
 const _defaultTransition = Transition.native;

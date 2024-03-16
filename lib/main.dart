@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
           fallbackLocale: const Locale('en'),
           initialRoute: AppRoutes.AUTH,
           initialBinding: NetworkBinding(),
-          unknownRoute: AppPages.unknownRoutePage,
           getPages: AppPages.pages,
           builder: (_, child) {
             return MainLayout(child: child!);
