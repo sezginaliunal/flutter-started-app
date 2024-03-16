@@ -1,7 +1,6 @@
-import 'package:started_app/app/res/durations/duration_items.dart';
+import 'package:get/get.dart';
 
 class SplashController {
-  Future<void> fetchData() async {
-    await Future.delayed(DurationItems.durationLarge());
-  }
+  RxList sampleList = [].obs;
+  Future<void> fetchData() async {}
 }

@@ -19,7 +19,6 @@ class GetStorageService extends BaseStorageService {
   Future<CacheResponse<dynamic>> getData(String key) async {
     try {
       final data = _storage.read(key);
-      print("Key $key : Data :$data");
       return CacheResponse(data, true, message: data.toString());
     } catch (e) {
       return CacheResponse(null, false, message: e.toString());
