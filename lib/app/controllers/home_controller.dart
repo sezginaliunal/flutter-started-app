@@ -6,7 +6,7 @@ class HomeController extends GetxController {
   RxList sampleList = [].obs;
   Future<Data> getData() async {
     final results = await NetworkManager.instance.httpGet<SampleModel>(
-      'api/users',
+      '',
       SampleModel(),
     );
     sampleList.value = results.data;

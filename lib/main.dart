@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           translations: Translation(),
           locale: Locale(translationController.selectedLanguage),
           fallbackLocale: const Locale('en'),
-          initialRoute: AppRoutes.AUTH,
+          initialRoute: AppRoutes.SPLASH,
           initialBinding: NetworkBinding(),
           getPages: AppPages.pages,
           builder: (_, child) {
