@@ -15,7 +15,9 @@ class MainLayout extends StatelessWidget {
     return SafeArea(
       child: Obx(() {
         if (networkController.connectionStatus.value == 0) {
-          return const Center(child: Text('No Connection'));
+          return const Center(
+            child: Text('No Connection'),
+          );
         } else {
           return child;
         }
