@@ -34,7 +34,14 @@ class GetStorageService extends BaseStorageService {
       return CacheResponse(false, false, message: e.toString());
     }
   }
-
+ Future<CacheResponse<bool>> deleteAllData() async {
+    try {
+      await _storage.erase();
+      return CacheResponse(true, true);
+    } catch (e) {
+      return CacheResponse(false, false, message: e.toString());
+    }
+  }
   Future<CacheResponse<bool>> containsKey(String key) async {
     try {
       final bool contains = _storage.hasData(key);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:started_app/app/data/services/storage/get_storage.dart';
-import 'package:started_app/app/res/enums/preferences_keys.dart';
+import 'package:started_app/app/data/services/auth/auth_services.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({
@@ -10,10 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () async {
-        await GetStorageService()
-            .saveData(PreferencesKeys.IS_LOGIN.toKeyName(), true);
-      }),
+      floatingActionButton: FloatingActionButton(onPressed: () =>AuthService().login()),
       body: const Center(
         child: Text('Login'),
       ),

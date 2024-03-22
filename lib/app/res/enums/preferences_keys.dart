@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 enum PreferencesKeys { IS_LOGIN, THEME_MODE, LOCALE }
 
 extension PreferencesKeysExtension on PreferencesKeys {

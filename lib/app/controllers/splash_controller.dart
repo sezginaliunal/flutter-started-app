@@ -1,17 +1,14 @@
 import 'package:get/get.dart';
-import 'package:started_app/app/data/models/sample_model.dart';
-import 'package:started_app/app/data/services/api/http_base.dart';
+import 'package:started_app/app/data/services/api/exception.dart';
+import 'package:started_app/app/res/durations/duration_items.dart';
 
 class SplashController extends GetxController {
   Future<void> testMethod() async {
     try {
-      final results = await NetworkManager.instance.httpGet<SampleModel>(
-        'api/users',
-        SampleModel(),
-      );
-      return results;
+      await Future.delayed(DurationItems.durationNormal());
     } catch (e) {
-      throw Exception();
+      handleHttpException(e);
+      rethrow;
     }
   }
 }

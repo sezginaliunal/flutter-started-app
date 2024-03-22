@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -19,17 +20,19 @@ class NetworkController extends GetxController {
   }
 
   Future<void> initConnectivity() async {
-    ConnectivityResult? result; // Nullable olarak tanımlandı
+    ConnectivityResult? result;
     try {
       result = await _connectivity.checkConnectivity();
     } on PlatformException catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
     return _updateConnectionStatus(result);
   }
 
   Future<void> _updateConnectionStatus(ConnectivityResult? result) async {
-    result ??= ConnectivityResult.none; // Başlangıç değeri atandı
+    result ??= ConnectivityResult.none;
 
     switch (result) {
       case ConnectivityResult.wifi:
@@ -49,7 +52,6 @@ class NetworkController extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
     _connectivitySubscription.cancel();
   }
