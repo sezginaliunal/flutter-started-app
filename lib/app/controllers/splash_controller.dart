@@ -1,21 +1,17 @@
 import 'package:get/get.dart';
-
-import 'package:started_app/app/data/services/storage/get_storage.dart';
-import 'package:started_app/app/data/services/storage/response.dart';
-import 'package:started_app/app/res/enums/preferences_keys.dart';
+import 'package:started_app/app/data/models/sample_model.dart';
+import 'package:started_app/app/data/services/api/http_base.dart';
 
 class SplashController extends GetxController {
-  final GetStorageService getStorageService = GetStorageService();
-
-  Future<bool> checkUserToken() async {
-    CacheResponse<dynamic> isUserToken =
-        await getStorageService.getData(PreferencesKeys.IS_LOGIN.toKeyName());
-
-    if (isUserToken.success &&
-        isUserToken.data != null &&
-        isUserToken.data != false) {
-      return true;
+  Future<void> testMethod() async {
+    try {
+      final results = await NetworkManager.instance.httpGet<SampleModel>(
+        'api/users',
+        SampleModel(),
+      );
+      return results;
+    } catch (e) {
+      throw Exception();
     }
-    return false;
   }
 }

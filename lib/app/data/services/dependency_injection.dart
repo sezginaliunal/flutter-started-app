@@ -1,3 +1,4 @@
+import 'package:started_app/app/controllers/auth_controller.dart';
 import 'package:started_app/app/controllers/translation_controller.dart';
 import 'package:started_app/app/data/services/api/http_base.dart';
 
@@ -9,5 +10,6 @@ class DependecyInjection {
     await GetStorage.init();
     NetworkManager.instance;
     Get.put<TranslationController>(TranslationController());
+    Get.put<AuthController>(AuthController());
   }
 }

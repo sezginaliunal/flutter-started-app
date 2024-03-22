@@ -9,7 +9,7 @@ import 'app/data/services/theme_service.dart';
 import 'app/data/services/translations_service.dart';
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
-import 'app/res/layouts/main/main_layout.dart';
+import 'app/res/layouts/main_layout.dart';
 import 'app/res/theme/base_theme.dart';
 
 void main() async {
