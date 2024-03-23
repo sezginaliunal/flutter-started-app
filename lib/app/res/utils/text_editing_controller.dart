@@ -20,11 +20,9 @@ class TextEditingControllerUtils {
     return null;
   }
 
-  String? emptyInputValidator(String? value) {
+   String? emptyInputValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return TextEditingControllerError.EMPTY_EMAIL.errorMessage;
-    } else if (!isValidEmail(value)) {
-      return TextEditingControllerError.INVALID_EMAIL.errorMessage;
+      return TextEditingControllerError.EMPTY_INPUT.errorMessage;
     }
     return null;
   }
