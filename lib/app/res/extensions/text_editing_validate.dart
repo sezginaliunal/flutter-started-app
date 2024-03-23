@@ -11,6 +11,8 @@ extension TextEditingControllerErrorExtension on TextEditingControllerError {
         return 'Şifre en az 8 karakter olmalı ve en az bir büyük harf, bir küçük harf ve bir rakam içermelidir.';
       case TextEditingControllerError.EMPTY_PASSWORD:
         return 'Lütfen bir şifre girin.';
+      case TextEditingControllerError.EMPTY_INPUT:
+        return 'Lütfen bir değer girin.';
     }
   }
 }
