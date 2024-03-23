@@ -6,7 +6,7 @@ class CustomFormWidget extends StatelessWidget {
   final bool obscureText;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
-  final String autofillHints;
+  final Iterable<String>? autofillHints;
   const CustomFormWidget({
     Key? key,
     required this.controller,
@@ -20,7 +20,7 @@ class CustomFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofillHints: [autofillHints],
+      autofillHints: autofillHints,
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
