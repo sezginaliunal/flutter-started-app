@@ -3,7 +3,7 @@ import 'package:started_app/app/res/extensions/text_editing_validate.dart';
 
 class TextEditingControllerUtils {
   String? emailValidator(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value == null || value.trim().isEmpty) {
       return TextEditingControllerError.EMPTY_EMAIL.errorMessage;
     } else if (!isValidEmail(value)) {
       return TextEditingControllerError.INVALID_EMAIL.errorMessage;
@@ -12,10 +12,19 @@ class TextEditingControllerUtils {
   }
 
   String? passwordValidator(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value == null || value.trim().isEmpty) {
       return TextEditingControllerError.EMPTY_PASSWORD.errorMessage;
     } else if (!isValidPassword(value)) {
       return TextEditingControllerError.INVALID_PASSWORD.errorMessage;
+    }
+    return null;
+  }
+
+  String? emptyInputValidator(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return TextEditingControllerError.EMPTY_EMAIL.errorMessage;
+    } else if (!isValidEmail(value)) {
+      return TextEditingControllerError.INVALID_EMAIL.errorMessage;
     }
     return null;
   }
