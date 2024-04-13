@@ -17,7 +17,7 @@ class FutureBuilderLayout<T> extends StatelessWidget {
       future: future,
       builder: (BuildContext context, AsyncSnapshot<T> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return  waiting;
+          return waiting;
         } else if (snapshot.hasError) {
           return Center(
             child: Text('Error: ${snapshot.error}'),

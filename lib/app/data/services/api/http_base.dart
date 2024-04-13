@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:started_app/app/data/models/base_model.dart';
 import 'package:started_app/app/data/services/api/exception.dart';
@@ -17,7 +18,11 @@ class NetworkManager {
 
   Future httpGet<T extends BaseModel>(String path, T model) async {
     try {
-      final response = await http.get(Uri.parse(baseUrl + path));
+      final uriPath = baseUrl + path;
+      final response = await http.get(Uri.parse(uriPath));
+      if (kDebugMode) {
+        print(uriPath);
+      }
       return _responseHandler.handleResponse(response, model);
     } catch (e) {
       throw handleHttpException(e);
@@ -27,7 +32,9 @@ class NetworkManager {
   Future httpPost<T extends BaseModel>(
       String path, dynamic data, T model) async {
     try {
-      final response = await http.post(Uri.parse(baseUrl + path), body: data);
+      final uriPath = baseUrl + path;
+
+      final response = await http.post(Uri.parse(uriPath), body: data);
       return _responseHandler.handleResponse(response, model);
     } catch (e) {
       throw handleHttpException(e);
