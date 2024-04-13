@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
       itemCount: controller.sampleList.length,
       itemBuilder: (BuildContext context, int index) {
         final sample = controller.sampleList[index];
+        final supportUrl = controller.supportUrl;
         return ListTile(
+          trailing: Text(supportUrl.value),
           leading: CircleAvatar(
             backgroundImage: NetworkImage(sample.avatar ?? 'Null'),
           ),
