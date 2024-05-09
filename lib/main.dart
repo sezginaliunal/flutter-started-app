@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:started_app/core/controllers/translation_controller.dart';
 import 'package:started_app/core/res/constants/strings.dart';
-import 'core/services/dependency_injection.dart';
 import 'core/services/theme_service.dart';
 import 'core/services/translations_service.dart';
 import 'core/routes/app_pages.dart';
 import 'core/routes/app_routes.dart';
 import 'core/res/theme/base_theme.dart';
+import 'init.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

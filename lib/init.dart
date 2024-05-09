@@ -8,7 +8,6 @@ import 'package:get_storage/get_storage.dart';
 class DependencyInjection {
   static Future<void> init() async {
     Get.put<NetworkController>(NetworkController(), permanent: true);
-
     await GetStorage.init();
     NetworkManager.instance;
     Get.put<TranslationController>(TranslationController());
