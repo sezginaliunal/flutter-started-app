@@ -1,0 +1,180 @@
+{
+	"Api Endpoint Extension": {
+		"prefix": "eext",
+		"body": [
+			"enum ${1:} {",
+			"\tone,",
+			"\ttwo,",
+			"\tthree,",
+			"}",
+			"",
+			"extension ${1:}Extension on ${1:} {",
+			"\tString get path {",
+			"\t\tswitch (this) {",
+			"\t\t\tcase ${1:}.one:",
+			"\t\t\t\treturn '/one';",
+			"\t\t\tcase ${1:}.two:",
+			"\t\t\t\treturn '/two';",
+			"\t\t\tcase ${1:}.three:",
+			"\t\t\t\treturn '/three';",
+			"\t\t\tdefault:",
+			"\t\t\t\treturn '/';",
+			"\t\t}",
+			"\t}",
+			"}"
+		],
+		"description": "Generates ${1:} enum and extension for API paths"
+	},
+	"Singleton Class": {
+		"prefix": "singleton_class",
+		"body": [
+			"class ${1:MySingleton} {",
+			"\tstatic final ${1:MySingleton} _singleton = ${1:MySingleton}._internal();",
+			"",
+			"\tfactory ${1:MySingleton}() {",
+			"\t\treturn _singleton;",
+			"\t}",
+			"",
+			"\t${1:MySingleton}._internal();",
+			"",
+			"\t// Add your singleton properties and methods here",
+			"}"
+		],
+		"description": "Generates a singleton class"
+	},
+	"GetView with Controller": {
+		"prefix": "get_view",
+		"body": [
+			"import 'package:get/get.dart';",
+			"import 'package:flutter/material.dart';",
+			"",
+			"class ${1:}Page extends GetView<${1:}Controller> {",
+			"\t@override",
+			"\tWidget build(BuildContext context) {",
+			"\t\treturn Scaffold(",
+			"\t\t\tappBar: AppBar(",
+			"\t\t\t\ttitle: Text('${1/([A-Z])/L$1/g}'),",
+			"\t\t\t),",
+			"\t\t\tbody: Container(",
+			"\t\t\t\t// Add your widgets here",
+			"\t\t\t),",
+			"\t\t);",
+			"\t}",
+			"}"
+		],
+		"description": "Generates a GetView page with controller"
+	},
+	"Gradient": {
+		"prefix": "gradient",
+		"body": [
+			"import 'package:flutter/material.dart';",
+			"",
+			"final LinearGradient ${1:gradientName} = LinearGradient(",
+			"\tbegin: Alignment.topCenter,",
+			"\tend: Alignment.bottomCenter,",
+			"\tcolors: [",
+			"\t\t${2:Colors.blue},",
+			"\t\t${3:Colors.green},",
+			"\t],",
+			"\tstops: [",
+			"\t\t${4:0.0},",
+			"\t\t${5:1.0},",
+			"\t],",
+			");"
+		],
+		"description": "Generates a LinearGradient"
+	},
+	"Classic GetX Controller": {
+		"prefix": "getx_controller",
+		"body": [
+			"import 'package:get/get.dart';",
+			"",
+			"class ${1:MyController} extends GetxController {",
+			"\t@override",
+			"\tvoid onInit() {",
+			"\t\tsuper.onInit();",
+			"\t\t// Add initialization logic here",
+			"\t}",
+			"",
+			"\t@override",
+			"\tvoid onClose() {",
+			"\t\t// Add disposal logic here",
+			"\t\tsuper.onClose();",
+			"\t}",
+			"}"
+		],
+		"description": "Generates a classic GetX Controller class"
+	},
+	"Colors Class": {
+		"prefix": "colors_class",
+		"body": [
+			"import 'package:flutter/material.dart';",
+			"class AppColors {",
+			"\tstatic const Color primaryColor = Color(0xFF${1:00B0FF});",
+			"\tstatic const Color accentColor = Color(0xFF${2:00FFA0});",
+			"\tstatic const Color backgroundColor = Color(0xFFFFFFFF);",
+			"\tstatic const Color buttonColor = Color(0xFF${3:FF5722});",
+			"\tstatic const Color textColor = Color(0xFF${4:333333});",
+			"\t// Add more colors as needed",
+			"}"
+		],
+		"description": "Generates a Colors class with theme-related colors"
+	},
+	"Classic Hive Model": {
+		"prefix": "hive_model",
+		"body": [
+			"import 'package:hive/hive.dart';",
+			"",
+			"part '${1:fileName}.g.dart';",
+			"",
+			"@HiveType(typeId: ${2:0})",
+			"class ${3:MyModel} extends HiveObject {",
+			"\t@HiveField(${4:0})",
+			"\tString ${5:fieldName};",
+			"",
+			"\t// Add your constructor and other fields here",
+			"}"
+		],
+		"description": "Generates a classic Hive model class"
+	},
+	"Permission Operations": {
+		"prefix": "permission_operations",
+		"body": [
+			"import 'package:permission_handler/permission_handler.dart';",
+			"",
+			"Future<bool> checkPermission() async {",
+			"\tPermissionStatus status = await Permission.${1:Location}.status;",
+			"\tif (status.isGranted) {",
+			"\t\treturn true;",
+			"\t} else {",
+			"\t\treturn false;",
+			"\t}",
+			"}",
+			"",
+			"void requestPermission() async {",
+			"\tPermissionStatus status = await Permission.${2:Location}.request();",
+			"\t// Handle the permission request result",
+			"}",
+			"",
+			"void showPermissionRationale() async {",
+			"\tbool showRationale = await Permission.${3:Location}.shouldShowRequestRationale;",
+			"\tif (showRationale) {",
+			"\t\t// Show permission rationale to the user",
+			"\t}",
+			"}"
+		],
+		"description": "Checks, requests, and shows rationale for a permission using permission_handler package"
+	},
+	"HiveConstants Class": {
+		"prefix": "hive_constants",
+		"body": [
+			"class HiveConstants {",
+			"\tstatic const int one = 1;",
+			"\tstatic const int two = 2;",
+			"\tstatic const int three = 3;",
+			"\tstatic const int five = 4;",
+			"}"
+		],
+		"description": "Generates a class with static integer constants for enum values"
+	}
+}
