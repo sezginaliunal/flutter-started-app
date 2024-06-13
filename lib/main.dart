@@ -11,7 +11,6 @@ import 'app/routes/app_routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependecyInjection().init();
-  await DeviceUtility.instance.initPackageInfo();
 
   runApp(const MyApp());
 }
