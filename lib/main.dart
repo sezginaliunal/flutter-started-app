@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:started_app/core/controllers/translation_controller.dart';
-import 'package:started_app/core/res/constants/strings.dart';
-import 'core/services/theme_service.dart';
-import 'core/services/translations_service.dart';
-import 'core/routes/app_pages.dart';
-import 'core/routes/app_routes.dart';
-import 'core/res/theme/base_theme.dart';
-import 'init.dart';
+import 'package:kartal/kartal.dart';
+import 'package:started_app/core/bindings/splash_binding.dart';
+import 'package:started_app/core/config/dependecy_injection.dart';
+import 'package:started_app/core/constants/app_infos.dart';
+import 'package:started_app/core/controllers/theme_controller.dart';
+import 'app/routes/app_pages.dart';
+import 'app/routes/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DependencyInjection.init();
+  await DependecyInjection().init();
+  await DeviceUtility.instance.initPackageInfo();
+
   runApp(const MyApp());
 }
 
@@ -20,18 +21,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TranslationController translationController = Get.find();
-    return GetMaterialApp(
-      title: AppStrings.appName,
-      debugShowCheckedModeBanner: false,
-      theme: Themes().lightTheme,
-      darkTheme: Themes().darkTheme,
-      themeMode: ThemeService.instance.themeMode,
-      translations: Translation(),
-      locale: Locale(translationController.selectedLanguage),
-      fallbackLocale: const Locale('en'),
-      initialRoute: AppRoutes.SPLASH,
-      getPages: AppPages.pages,
-    );
+    final ThemeController themeController = Get.put(ThemeController());
+    return Obx(() => GetMaterialApp(
+          title: AppInfos.appName,
+          debugShowCheckedModeBanner: false,
+          theme:
+              themeController.getThemeData(themeController.currentTheme.value),
+          initialRoute: AppRoutes.SPLASH,
+          getPages: AppPages.pages,
+          initialBinding: SplashBinding(),
+        ));
   }
 }

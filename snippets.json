@@ -9,7 +9,7 @@
 			"}",
 			"",
 			"extension ${1:}Extension on ${1:} {",
-			"\tString get path {",
+			"\tString get value {",
 			"\t\tswitch (this) {",
 			"\t\t\tcase ${1:}.one:",
 			"\t\t\t\treturn '/one';",
@@ -48,7 +48,7 @@
 			"import 'package:get/get.dart';",
 			"import 'package:flutter/material.dart';",
 			"",
-			"class ${1:}Page extends GetView<${1:}Controller> {",
+			"class ${1:}View extends GetView<${1:}Controller> {",
 			"\t@override",
 			"\tWidget build(BuildContext context) {",
 			"\t\treturn Scaffold(",
@@ -166,7 +166,7 @@
 		"description": "Checks, requests, and shows rationale for a permission using permission_handler package"
 	},
 	"HiveConstants Class": {
-		"prefix": "hive_constants",
+		"prefix": "hive_type_constants",
 		"body": [
 			"class HiveConstants {",
 			"\tstatic const int one = 1;",
@@ -176,5 +176,19 @@
 			"}"
 		],
 		"description": "Generates a class with static integer constants for enum values"
+	},
+	"GetX HomeBinding": {
+		"prefix": "get_binding",
+		"body": [
+			"import 'package:get/get.dart';",
+			"",
+			"class ${1:}Binding implements Bindings {",
+			"  @override",
+			"  void dependencies() {",
+			"    Get.lazyPut<${1:}Controller>(() => ${1:}Controller());",
+			"  }",
+			"}"
+		],
+		"description": "GetX Binding"
 	}
 }
