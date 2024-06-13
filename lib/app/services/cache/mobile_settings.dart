@@ -1,6 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:started_app/app/models/mobile_settings.dart';
-import 'package:started_app/core/constants/hive_keys.dart';
 import 'package:started_app/core/constants/hive_type_ids.dart';
 import 'package:started_app/core/services/database/local/base_cache.dart';
 
@@ -10,14 +9,14 @@ class MobileSettingsCacheManager extends ICacheManager<MobileSettings> {
   @override
   Future<void> addItems(List<MobileSettings> items) async {
     for (var item in items) {
-      await box?.put(HiveKeysConstants.mobileSettingsKey, item);
+      await box?.put(item.Company, item);
     }
   }
 
   @override
   Future<void> putItems(List<MobileSettings> items) async {
     for (var item in items) {
-      await box?.put(HiveKeysConstants.mobileSettingsKey, item);
+      await box?.put(item.Company, item);
     }
   }
 

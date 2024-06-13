@@ -13,6 +13,7 @@ class MobileSettingsApiService extends BaseApiService<MobileSettings> {
         parseModel: MobileSettings(),
         isErrorDialog: true,
         method: RequestType.GET);
+    print(response);
     return response;
   }
 
