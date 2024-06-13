@@ -1,7 +1,5 @@
 import 'package:vexana/vexana.dart';
 
-enum APIEndpoints { users }
-
 abstract class BaseApiService<T> {
   late final INetworkManager networkManager;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 CardTheme _cardLightTheme = const CardTheme(
-  color: Colors.white,
+  color: Colors.red,
   elevation: 4,
 );
 

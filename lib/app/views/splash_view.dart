@@ -11,9 +11,22 @@ class SplashView extends GetView<SplashController> {
       appBar: AppBar(
         title: const Text('Splash'),
       ),
-      body: Container(
-          // Add your widgets here
-          ),
+      body: Center(
+        child: Obx(() {
+          var settings = controller.mobileSettings.value;
+          if (settings == null) {
+            return const CircularProgressIndicator();
+          }
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('App URL: ${settings.AppUrl}'),
+              Text('Company: ${settings.Company}'),
+              // Add more fields as needed
+            ],
+          );
+        }),
+      ),
     );
   }
 }
