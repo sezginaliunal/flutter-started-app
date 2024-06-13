@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
 import 'package:started_app/core/bindings/splash_binding.dart';
 import 'package:started_app/core/config/dependecy_injection.dart';
 import 'package:started_app/core/constants/app_infos.dart';
@@ -11,7 +10,6 @@ import 'app/routes/app_routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependecyInjection().init();
-  await DeviceUtility.instance.initPackageInfo();
 
   runApp(const MyApp());
 }
