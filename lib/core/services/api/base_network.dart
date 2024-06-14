@@ -3,16 +3,14 @@ import 'package:vexana/vexana.dart';
 abstract class BaseApiService<T> {
   late final INetworkManager networkManager;
 
-  BaseApiService(String baseUrl) {
+  BaseApiService() {
     final options = BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: 'https://jsonplaceholder.typicode.com',
     );
-    networkManager = NetworkManager<EmptyModel>(
-      options: options,
-    );
+    networkManager =
+        NetworkManager<EmptyModel>(options: options, isEnableLogger: true);
   }
 
-  Future<IResponseModel<T?, INetworkModel?>?> getData(String endpoint);
-  Future<IResponseModel<T?, INetworkModel?>?> postData(
-      String endpoint, dynamic data);
+  Future<T?> getData(String endpoint);
+  Future<T?> postData(String endpoint, dynamic data);
 }

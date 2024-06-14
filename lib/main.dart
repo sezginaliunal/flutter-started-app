@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:started_app/core/bindings/splash_binding.dart';
+import 'package:started_app/app/features/splash/splash_binding.dart';
 import 'package:started_app/core/config/dependecy_injection.dart';
 import 'package:started_app/core/constants/app_infos.dart';
 import 'package:started_app/core/controllers/theme_controller.dart';
