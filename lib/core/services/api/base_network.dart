@@ -1,3 +1,4 @@
+import 'package:started_app/core/constants/api_urls.dart';
 import 'package:vexana/vexana.dart';
 
 abstract class BaseApiService<T> {
@@ -5,10 +6,10 @@ abstract class BaseApiService<T> {
 
   BaseApiService() {
     final options = BaseOptions(
-      baseUrl: 'https://jsonplaceholder.typicode.com',
+      baseUrl: ApiUrls.baseUrl.value,
     );
-    networkManager =
-        NetworkManager<EmptyModel>(options: options, isEnableLogger: true);
+    networkManager = NetworkManager<EmptyModel>(
+        options: options, isEnableLogger: true, skippingSSLCertificate: true);
   }
 
   Future<T?> getData(String endpoint);
