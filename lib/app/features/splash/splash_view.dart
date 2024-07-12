@@ -1,14 +1,19 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:started_app/app/features/splash/splash_controller.dart';
+import 'package:provider/provider.dart';
 import 'package:started_app/core/controllers/theme_controller.dart';
 
-class SplashView extends GetView<SplashController> {
+class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
 
   @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
   Widget build(BuildContext context) {
-    final ThemeController themeController = Get.find();
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Splash'),
@@ -16,10 +21,9 @@ class SplashView extends GetView<SplashController> {
       body: Column(
         children: [
           Switch(
-              value: context.isDarkMode,
+              value: themeNotifier.isDarkMode(),
               onChanged: (val) {
-                themeController.setTheme(
-                    context.isDarkMode ? AppTheme.Light : AppTheme.Dark);
+                themeNotifier.switchTheme();
               })
         ],
       ),

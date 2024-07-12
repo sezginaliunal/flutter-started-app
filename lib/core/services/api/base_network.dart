@@ -1,4 +1,4 @@
-import 'package:started_app/core/constants/api_urls.dart';
+import 'package:started_app/core/config/constants/api_urls.dart';
 import 'package:vexana/vexana.dart';
 
 abstract class BaseApiService<T> {

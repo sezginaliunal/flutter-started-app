@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:started_app/app/features/splash/splash_binding.dart';
-import 'package:started_app/core/config/dependecy_injection.dart';
-import 'package:started_app/core/constants/app_infos.dart';
+import 'package:provider/provider.dart';
+import 'package:started_app/app.dart';
+import 'package:started_app/core/config/locator/locator_service.dart';
 import 'package:started_app/core/controllers/theme_controller.dart';
-import 'app/routes/app_pages.dart';
-import 'app/routes/app_routes.dart';
+import 'package:get_it/get_it.dart';
+
+GetIt getIt = GetIt.instance;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DependecyInjection().init();
+  await setupLocator();
 
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeController themeController = Get.put(ThemeController());
-    return Obx(() => GetMaterialApp(
-          title: AppInfos.appName,
-          debugShowCheckedModeBanner: false,
-          theme:
-              themeController.getThemeData(themeController.currentTheme.value),
-          initialRoute: AppRoutes.SPLASH,
-          getPages: AppPages.pages,
-          initialBinding: SplashBinding(),
-        ));
-  }
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => getIt<ThemeNotifier>(),
+      child: const MyApp(),
+    ),
+  );
 }

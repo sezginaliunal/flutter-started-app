@@ -1,36 +1,48 @@
-// ignore_for_file: strict_raw_type
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:started_app/app/theme/base_theme.dart';
-import 'package:started_app/core/constants/hive_boxes.dart';
-import 'package:started_app/core/constants/hive_keys.dart';
+import 'package:started_app/core/config/theme/base_theme.dart';
+import 'package:started_app/core/config/constants/hive_boxes.dart';
+import 'package:started_app/core/config/constants/hive_keys.dart';
 
 enum AppTheme { Light, Dark }
 
-class ThemeController extends GetxController {
-  Rx<AppTheme> currentTheme = AppTheme.Light.obs;
-  Box box = Hive.box(HiveBoxConstants.settings.value);
+class ThemeNotifier extends ChangeNotifier {
+  AppTheme _currentTheme = AppTheme.Light;
+  Box box = Hive.box(HiveBoxConstants.theme.value);
 
-  @override
-  void onInit() {
-    super.onInit();
-    currentTheme.value = AppTheme
+  ThemeNotifier() {
+    _currentTheme = AppTheme
         .values[box.get(HiveKeysConstants.theme.value, defaultValue: 0)];
   }
 
+  AppTheme get currentTheme => _currentTheme;
+
   void setTheme(AppTheme theme) {
-    currentTheme.value = theme;
+    _currentTheme = theme;
     box.put(HiveKeysConstants.theme.value, theme.index);
+    notifyListeners();
   }
 
-  ThemeData getThemeData(AppTheme theme) {
-    switch (theme) {
+  ThemeData getThemeData() {
+    switch (_currentTheme) {
       case AppTheme.Light:
         return Themes().lightTheme;
       case AppTheme.Dark:
         return Themes().darkTheme;
     }
+  }
+
+  void switchTheme() {
+    _currentTheme =
+        _currentTheme == AppTheme.Light ? AppTheme.Dark : AppTheme.Light;
+    box.put(HiveKeysConstants.theme.value, _currentTheme.index);
+    notifyListeners();
+  }
+
+  bool isDarkMode() {
+    if (currentTheme != AppTheme.Dark) {
+      return false;
+    }
+    return true;
   }
 }
