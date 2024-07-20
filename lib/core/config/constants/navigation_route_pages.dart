@@ -6,8 +6,9 @@ import 'package:started_app/core/config/constants/navigation_routes.dart';
 class AppRouter {
   static List<GetPage> getPages = [
     GetPage(
-        name: RoutesName.INITIAL_ROUTE,
-        page: () => const SplashView(),
-        binding: SplashBinding()),
+      name: RoutesName.INITIAL_ROUTE,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+    ),
   ];
 }

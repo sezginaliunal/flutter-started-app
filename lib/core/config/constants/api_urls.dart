@@ -1,10 +1,12 @@
-enum ApiUrls { baseUrl }
+enum ApiUrls { baseUrl, users }
 
 extension ApiUrlsExtension on ApiUrls {
-  String get value {
+  String get rawValue {
     switch (this) {
       case ApiUrls.baseUrl:
-        return '';
+        return 'https://reqres.in/api';
+      case ApiUrls.users:
+        return '/users';
     }
   }
 }

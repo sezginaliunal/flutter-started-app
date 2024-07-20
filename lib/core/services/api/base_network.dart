@@ -1,48 +1,54 @@
-import 'package:dio/dio.dart';
+import 'package:started_app/app/features/user/user.dart';
 import 'package:started_app/core/config/constants/api_urls.dart';
+import 'package:vexana/vexana.dart';
 
 abstract class BaseApiService<T> {
-  late final Dio dio;
+  late final INetworkManager networkManager;
 
   BaseApiService() {
     final options = BaseOptions(
-      baseUrl: ApiUrls.baseUrl.value,
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      baseUrl: ApiUrls.baseUrl.rawValue,
     );
-    dio = Dio(options);
+    networkManager = NetworkManager<EmptyModel>(
+        options: options, isEnableLogger: true, skippingSSLCertificate: true);
   }
 
-  Future<T?> getData(String endpoint) async {
-    try {
-      final response = await dio.get(endpoint);
-      if (response.statusCode == 200) {
-        return response.data as T?;
-      } else {
-        print('Failed to get data: ${response.statusCode}');
-        return null;
-      }
-    } catch (e) {
-      print('Error occurred: $e');
-      return null;
+  Future<T?> getData(String endpoint);
+  Future<T?> getListData(String endpoint);
+  Future<T?> postData(String endpoint, dynamic data);
+}
+
+class UserService extends BaseApiService<User> {
+  @override
+  Future<User?> getData(String endpoint) async {
+    final result = await networkManager.send<User, User>(
+      endpoint,
+      parseModel: User(),
+      method: RequestType.GET,
+    );
+    print(result.data);
+    return result.data;
+  }
+
+  @override
+  Future<User?> getListData(String endpoint) async {
+    final result = await networkManager.send<User, User>(
+      endpoint,
+      parseModel: User(),
+      method: RequestType.GET,
+    );
+
+    if (result.data != null) {
+      return result.data;
+    } else {
+      // Handle null case according to your application logic
+      return null; // Or throw an error, depending on your needs
     }
   }
 
-  Future<T?> postData(String endpoint, Map<String, dynamic> data) async {
-    try {
-      final response = await dio.post(endpoint, data: data);
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        return response.data as T?;
-      } else {
-        print('Failed to post data: ${response.statusCode}');
-        return null;
-      }
-    } catch (e) {
-      print('Error occurred: $e');
-      return null;
-    }
+  @override
+  Future<User?> postData(String endpoint, dynamic data) {
+    // TODO: Implement postData if needed for your application
+    throw UnimplementedError();
   }
 }

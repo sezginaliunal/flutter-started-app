@@ -1,27 +1,42 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:started_app/app/features/splash/splash_controller.dart';
-import 'package:started_app/core/controllers/theme_controller.dart';
+import 'package:started_app/app/features/user/user.dart';
 
 class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ThemeController themeController = Get.find<ThemeController>();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Splash'),
       ),
-      body: Obx(() => Center(
-            child: IconButton(
-                color: themeController.isDarkMode() ? Colors.red : Colors.blue,
-                onPressed: () => themeController.switchTheme(),
-                icon: Icon(themeController.currentTheme.value == AppTheme.Dark
-                    ? Icons.dark_mode
-                    : Icons.light_mode)),
-          )),
+      body: FutureBuilder(
+        future: controller.loadUsers(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasError) {
+            return const Center(child: Text("Hata oluştu"));
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView.builder(
+            itemCount: controller.users.value?.length,
+            itemBuilder: (BuildContext context, int index) {
+              final userIndex = controller.users.value![index];
+              return ListTile(
+                title: Text(userIndex.email ?? 'Null'),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(userIndex.avatar.toString()),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
