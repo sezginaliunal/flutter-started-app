@@ -13,17 +13,17 @@ dependencies:
   cupertino_icons: ^1.0.6
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  vexana: ^4.0.3
   json_annotation: ^4.9.0
-  json_serializable: ^6.8.0
+
   kartal: ^4.0.4
-  provider: ^6.1.2
-  get_it: ^7.7.0
+  get: ^4.6.6
+  dio: ^5.5.0+1
 
 dev_dependencies:
   flutter_lints: ^3.0.0
   hive_generator: ^2.0.1
   build_runner: ^2.4.11
+  json_serializable: ^6.8.0
 
   # #to make native splash screen
   # # 1) change path image_path
