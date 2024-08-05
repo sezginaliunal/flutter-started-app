@@ -31,6 +31,8 @@ class AuthController extends GetxController {
 
       if (response.success == true) {
         await Future.microtask(() => Get.offAllNamed(RoutesName.LOGIN));
+      } else {
+        print(response.message);
       }
     }
   }
@@ -45,6 +47,8 @@ class AuthController extends GetxController {
         final jwt = response.data;
         await jwtModelCacheManager.putItem(HiveBoxConstants.jwt.value, jwt!);
         await Future.microtask(() => Get.offAllNamed(RoutesName.HOME));
+      } else {
+        print(response.message);
       }
     }
   }

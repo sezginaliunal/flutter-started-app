@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:started_app/app/features/home/home_controller.dart';
 import 'package:started_app/app/features/user/user.dart';
+import 'package:started_app/core/controllers/theme_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class HomeView extends GetView<HomeController> {
         title: const Text('Home'),
         actions: [
           IconButton(
-              onPressed: controller.authController.logout,
+              onPressed: () =>
+                  controller.themeController.setTheme(AppTheme.Light),
               icon: const Icon(Icons.logout))
         ],
       ),

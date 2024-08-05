@@ -1,4 +1,4 @@
-enum ApiUrls { baseUrl, users, register, login, logout }
+enum ApiUrls { baseUrl, users, register, login, logout, resetPassword }
 
 extension ApiUrlsExtension on ApiUrls {
   String get rawValue {
@@ -13,6 +13,8 @@ extension ApiUrlsExtension on ApiUrls {
         return '/auth/login';
       case ApiUrls.logout:
         return '/auth/logout';
+      case ApiUrls.resetPassword:
+        return '/auth/reset_password';
     }
   }
 }
