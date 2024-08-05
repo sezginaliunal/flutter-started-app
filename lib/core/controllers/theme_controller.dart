@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:started_app/core/config/theme/base_theme.dart';
 import 'package:started_app/core/config/constants/hive_boxes.dart';
-import 'package:started_app/core/config/constants/hive_keys.dart';
 
 enum AppTheme { Light, Dark }
 
@@ -12,13 +11,13 @@ class ThemeController extends GetxController {
   Box box = Hive.box(HiveBoxConstants.theme.value);
 
   ThemeController() {
-    currentTheme.value = AppTheme
-        .values[box.get(HiveKeysConstants.theme.value, defaultValue: 0)];
+    currentTheme.value =
+        AppTheme.values[box.get(HiveBoxConstants.theme.value, defaultValue: 0)];
   }
 
   void setTheme(AppTheme theme) {
     currentTheme.value = theme;
-    box.put(HiveKeysConstants.theme.value, theme.index);
+    box.put(HiveBoxConstants.theme.value, theme.index);
   }
 
   ThemeData getThemeData() {
@@ -35,7 +34,7 @@ class ThemeController extends GetxController {
   void switchTheme() {
     currentTheme.value =
         currentTheme.value == AppTheme.Light ? AppTheme.Dark : AppTheme.Light;
-    box.put(HiveKeysConstants.theme.value, currentTheme.value.index);
+    box.put(HiveBoxConstants.theme.value, currentTheme.value.index);
   }
 
   bool isDarkMode() {

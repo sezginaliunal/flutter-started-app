@@ -9,6 +9,7 @@ abstract class ICacheManager<T> {
     registerAdapters();
     if (!(box?.isOpen ?? false)) {
       box = await Hive.openBox(key);
+      print(box?.isOpen);
     }
   }
 

@@ -1,3 +1,3 @@
 class HiveTypeIds {
-  static const int mobileSettingsTypeId = 1;
+  static const int jwtModelTypeId = 1;
 }
